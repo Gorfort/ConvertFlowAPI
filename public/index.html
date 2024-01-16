@@ -9,26 +9,28 @@
     <link rel="stylesheet" type="text/css" href="../css/styles.css" />
   </head>
   <body>
-    <!-- Main content of the page -->
-    <h1>Currency Converter</h1>
+    <div class="Box1">
+        <!-- Main content of the page -->
+        <h1>Currency Converter</h1>
+        <div class="Box2">
+            <!-- Input for entering the amount to convert -->
+            <label class="center-text" for="amount">Amount:</label>
+            <input type="number" id="amount" placeholder="Enter amount" inputmode="numeric" style="text-align: center;" />
 
-    <!-- Input for entering the amount to convert -->
-    <label for="amount">Amount:</label>
-    <input type="number" id="amount" placeholder="Enter amount" />
+            <!-- Dropdown for selecting the source currency -->
+            <label for="from">From</label>
+            <select id="from"></select>
 
-    <!-- Dropdown for selecting the source currency -->
-    <label for="from">From:</label>
-    <select id="from"></select>
+            <!-- Dropdown for selecting the target currency -->
+            <label for="to">To</label>
+            <select id="to"></select>
 
-    <!-- Dropdown for selecting the target currency -->
-    <label for="to">To:</label>
-    <select id="to"></select>
-
-    <!-- Button to trigger the conversion -->
-    <button onclick="convert()">Convert</button>
-
-    <!-- Paragraph element to display the conversion result -->
-    <p id="result"></p>
+            <!-- Button to trigger the conversion -->
+            <button onclick="convert()">Convert</button>
+        </div>
+        <!-- Paragraph element to display the conversion result -->
+        <p id="result"></p>
+    </div>
 
     <script>
         function populateCurrencies() {
