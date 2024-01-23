@@ -1,17 +1,21 @@
 {
   "name": "convertflowapi",
   "version": "1.0.0",
-  "description": "",
+  "description": "![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![Windows 11](https://img.shields.io/badge/Windows%2011-%230079d5.svg?style=for-the-badge&logo=Windows%2011&logoColor=white)  ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)  ## Description  Project not yet finished.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Thibaud",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.5",
     "cors": "^2.8.5",
-    "express": "^4.18.2"
-  }
+    "express": "^4.18.2",
+    "install": "^0.13.0",
+    "npm": "^10.3.0",
+    "or": "^0.2.0"
+  },
+  "devDependencies": {}
 }
