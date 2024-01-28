@@ -12,8 +12,14 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 // Parse incoming JSON requests
 app.use(express.json());
+
+app.use(function (req, res, next) {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  next();
+});
+
 // Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Replace with your actual Fixer.io API key
 const API_KEY = "Y233f6703823106c385cc4b2905a19563";
