@@ -1,27 +1,26 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
-  justify-content: center;
   display: flex;
-  background-color: rgb(255, 255, 255);
   color: rgb(255, 255, 255);
+  background-color: #282828;
 }
 
 h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 0px;
+}
+
+h5 {
+  margin-top: 0px;
 }
 
 .Box1 {
   display: flex;
-  width: 600px;
-  height: 600px;
-  background: rgb(63, 94, 251);
-  background: radial-gradient(
-    circle,
-    rgba(63, 94, 251, 1) 0%,
-    rgba(252, 70, 107, 1) 100%
-  );
+  width: 700px;
+  height: 700px;
+  background: rgb(62, 62, 62);
   flex-direction: column;
   align-items: center;
   border-radius: 60px;
@@ -29,29 +28,40 @@ h1 {
 
 .Box2 {
   align-items: center;
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   display: flex;
-  background-color: rgba(255, 255, 255, 0.37);
+  background-color: dimgray;
   flex-direction: column;
   justify-content: center;
   border-radius: 60px;
+  position: relative;
+}
+
+.Box3 {
+  align-items: center;
+  width: 450px;
+  height: 450px;
+  display: flex;
+  background-color: #575757;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 45px;
+  position: relative;
 }
 
 /* removes arrows */
-
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-/*
+
 input[type="number"] {
   -moz-appearance: textfield;
 }
-*/
-/* styles.css */
 
+/* styles.css */
 /* Apply text-align: center to labels with the center-text class */
 label.center-text {
   text-align: center;
@@ -60,6 +70,16 @@ label.center-text {
 /* Center text in the dropdowns */
 select {
   text-align: center;
+  padding-left: 18px; /* Add left padding to move the text to the right */
+  width: 200px; /* Make the select twice as wide */
+  height: 40px; /* Make the select twice as tall */
+  font-size: 16px; /* Make the font size twice as big */
+}
+
+input {
+  width: 200px; /* Make the select twice as wide */
+  height: 40px; /* Make the select twice as tall */
+  font-size: 16px; /* Make the font size twice as big */
 }
 
 /* Optionally, you can center text vertically in the dropdowns */
@@ -68,9 +88,31 @@ select option {
 }
 
 label {
-  margin-top: 10px;
+  margin-top: 20px; /* Adjusted for better spacing */
+  font-weight: bolder;
+  font-size: 20px; /* Make the font size twice as big */
 }
 
 button {
-  margin-top: 20px;
+  margin-top: 40px; /* Adjusted for better spacing */
+  width: 200px; /* Make the button twice as wide */
+  height: 40px; /* Make the button twice as tall */
+  font-size: 20px; /* Make the font size twice as big */
+  font-weight: bolder;
+  border-radius: 35px;
+}
+
+#result {
+  margin: 0px;
+  position: absolute;
+  bottom: 35px; /* Adjust the distance from the bottom as needed */
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+#amount,
+#from,
+#to {
+  border-radius: 14px; /* Make the border radius twice as big */
+  font-size: 16px; /* Make the font size twice as big */
 }
