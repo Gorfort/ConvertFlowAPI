@@ -17,18 +17,21 @@
     <h5>Currency Converter</h5>
     <div class="Box2">
       <div class="Box3">
-        <!-- Input for entering the amount to convert -->
-        <label class="center-text" for="amount">Amount</label>
-        <input type="number" id="amount" placeholder="Enter amount" inputmode="numeric" style="text-align: center;" />
-
-        <!-- Dropdown for selecting the source currency -->
-        <label for="from">From</label>
-        <select id="from"></select>
-
-        <!-- Dropdown for selecting the target currency -->
-        <label for="to">To</label>
-        <select id="to"></select>
-
+        <div class="amounts">
+          <!-- Input for entering the amount to convert -->
+          <label class="center-text" for="amount">Amount</label>
+          <input type="number" id="amount" placeholder="Enter amount" inputmode="numeric" style="text-align: center;" />
+        </div>
+        <div class="froms">
+          <!-- Dropdown for selecting the source currency -->
+          <label for="from">From</label>
+          <select id="from"></select>
+        </div>
+        <div class="tos">
+          <!-- Dropdown for selecting the target currency -->
+          <label for="to">To</label>
+          <select id="to"></select>
+        </div>
         <!-- Button to trigger the conversion -->
         <button onclick="convert()">Convert</button>
       </div>
