@@ -21,7 +21,7 @@ h5 {
 .header {
   display: flex;
   width: 100%;
-  height: 70px;
+  height: 60px;
   background: rgb(62, 62, 62);
   flex-direction: column;
   align-items: center;
@@ -30,7 +30,7 @@ h5 {
 .test100 {
   display: flex;
   width: 100%;
-  height: 470px;
+  height: 480px;
   background: rgb(62, 62, 62);
   margin-top: 150px;
   bottom: 0px;
@@ -46,7 +46,7 @@ h5 {
 }
 
 .Box2 {
-  margin-top: 170px;
+  margin-top: 165px;
   align-items: center;
   width: 1150px;
   height: 300px;
@@ -151,4 +151,13 @@ button {
   border-radius: 10px; /* Make the border radius twice as big */
   font-size: 16px; /* Make the font size twice as big */
   flex-direction: column;
+}
+
+.small-button {
+  font-size: 14px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50px;
+  font-size: 20px; /* Make the font size twice as big */
+  font-weight: bolder;
 }
