@@ -2,51 +2,45 @@
 <html lang="en">
 
 <head>
-  <!-- Meta tags for character set and viewport -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Title of the HTML page -->
   <title>Currency Converter</title>
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
   <div class="Box1">
-    <!-- Main content of the page -->
+    <div class="header"></div>
     <h1>ConvertFlow</h1>
     <h5>Currency Converter</h5>
     <div class="Box2">
       <div class="Box3">
         <div class="amounts">
-          <!-- Input for entering the amount to convert -->
           <label class="center-text" for="amount">Amount</label>
           <input type="number" id="amount" placeholder="Enter amount" inputmode="numeric" style="text-align: center;" />
         </div>
         <div class="froms">
-          <!-- Dropdown for selecting the source currency -->
           <label for="from">From</label>
           <select id="from"></select>
         </div>
         <div class="tos">
-          <!-- Dropdown for selecting the target currency -->
           <label for="to">To</label>
           <select id="to"></select>
         </div>
-        <!-- Button to trigger the conversion -->
         <button onclick="convert()">Convert</button>
       </div>
     </div>
-    <!-- Paragraph element to display the conversion result -->
-    <p id="result"></p>
+    <div class="test100"></div>
+    <p id="result" style="display: none;"></p>
   </div>
 
   <script>
+    // Populate the currency select dropdowns on page load
     window.onload = function () {
       populateCurrencies();
-      // Disable the convert button by default
-      document.getElementById("convertBtn").disabled = true;
     };
 
+    // Function to populate the currency select dropdowns
     function populateCurrencies() {
       const selectedCurrencies = [
         "USD", "EUR", "GBP", "JPY", "CAD",
@@ -68,90 +62,100 @@
       fromCurrencySelect.add(defaultOption);
       toCurrencySelect.add(defaultOption.cloneNode(true));
 
-      // Add currency options for the selected currencies
+      // Add selected currencies as options
       selectedCurrencies.forEach((currency) => {
         const option = document.createElement("option");
         option.value = currency;
         option.text = currency;
 
-        // Append the option to both dropdowns
         fromCurrencySelect.add(option);
         toCurrencySelect.add(option.cloneNode(true));
       });
 
-      // Add event listeners to updateToCurrencies and enable/disable convert button
+      // Update "To" currencies when "From" currency changes
       fromCurrencySelect.addEventListener("change", function () {
         updateToCurrencies();
         checkEnableConvertButton();
       });
 
+      // Check if convert button should be enabled when "To" currency changes
       toCurrencySelect.addEventListener("change", function () {
         checkEnableConvertButton();
       });
     }
 
+    // Update "To" currencies based on selected "From" currency
     function updateToCurrencies() {
       const fromCurrencySelect = document.getElementById("from");
       const toCurrencySelect = document.getElementById("to");
-
-      // Get the selected currency in the 'from' dropdown
       const selectedCurrency = fromCurrencySelect.value;
 
-      // Filter out the selected currency from the 'to' dropdown options
       const toCurrencyOptions = Array.from(toCurrencySelect.options);
       const filteredOptions = toCurrencyOptions.filter(option => option.value !== selectedCurrency);
 
-      // Clear existing options in the 'to' dropdown
+      // Clear existing options
       toCurrencySelect.innerHTML = "";
 
-      // Add filtered options to 'to' dropdown
+      // Add filtered options
       filteredOptions.forEach((option) => {
         toCurrencySelect.add(option.cloneNode(true));
       });
 
-      // Add default option to 'to' dropdown if there are no other options
+      // Add default option if no options available
       if (toCurrencySelect.options.length === 0) {
         const defaultOption = document.createElement("option");
         defaultOption.value = "";
         defaultOption.text = "Select Currency";
         toCurrencySelect.add(defaultOption);
       } else {
-        // Hide the default option
         toCurrencySelect.options[0].style.display = "none";
       }
     }
 
+    // Check if convert button should be enabled
     function checkEnableConvertButton() {
       const amount = document.getElementById("amount").value;
       const fromCurrency = document.getElementById("from").value;
       const toCurrency = document.getElementById("to").value;
       const convertBtn = document.getElementById("convertBtn");
 
-      // Enable the convert button only if amount is a valid number and both currencies are selected
       convertBtn.disabled = !(isNumeric(amount) && fromCurrency !== "" && toCurrency !== "");
     }
 
+    // Check if a value is numeric
     function isNumeric(value) {
       return !isNaN(parseFloat(value)) && isFinite(value);
     }
 
+    // Convert currency
     function convert() {
       const amount = document.getElementById("amount").value;
       const fromCurrency = document.getElementById("from").value;
       const toCurrency = document.getElementById("to").value;
+      const resultElement = document.getElementById("result");
+      const box2Element = document.querySelector(".Box2");
 
-      // Additional validation can be added if needed
+      // Perform conversion if all required fields are filled
       if (isNumeric(amount) && fromCurrency !== "" && toCurrency !== "") {
         fetch(`http://localhost:3000/convert?amount=${amount}&from=${fromCurrency}&to=${toCurrency}`)
           .then((response) => response.json())
           .then((data) => {
-            document.getElementById("result").innerText = `${data.convertedAmount} ${toCurrency}`;
+            resultElement.innerText = `${data.convertedAmount} ${toCurrency}`;
+
+            // Change the height of Box2 without delay
+            box2Element.style.height = "350px"; // Adjust the height as needed
+
+            // Use setTimeout to delay displaying the result for a smoother effect
+            setTimeout(function () {
+              resultElement.style.display = "block";
+            }, 800); // No additional delay for the result display
           })
-          .catch((error) =>
-            console.error("Error converting currencies:", error)
-          );
+          .catch((error) => {
+            console.error("Error converting currencies:", error);
+          });
       }
     }
+
   </script>
 </body>
 
